@@ -1,5 +1,5 @@
 class LandingController < ApplicationController
-  def index
+  def landing
     if current_user
       # render the onepage thing here
       render plain: "#{current_user.username} logged in"
