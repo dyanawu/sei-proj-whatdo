@@ -2,7 +2,7 @@ class LandingController < ApplicationController
   def landing
     if current_user
       # render the onepage thing here
-      render plain: "#{current_user.username} logged in"
+      redirect_to whatdo_path
     end
   end
 end
