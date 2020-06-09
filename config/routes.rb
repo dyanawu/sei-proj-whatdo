@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
-  get 'whatdo/index'
   devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-  root to: 'landing#landing'
-  get 'whatdo', to: 'whatdo#index'
+  root to: 'whatdo#index'
+  get '/landing', to: 'landing#landingpage', as: 'landing'
 end
