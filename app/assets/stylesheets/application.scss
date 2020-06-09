@@ -14,4 +14,17 @@
  *= require_self
  */
 
+$dark: #1A242E;
+$light: #DEDEDE;
+@import url(http://fonts.googleapis.com/css?family=Rosario:400,300,700);
+$font-family-sans-serif: Rosario, sans-serif;
 @import "bootstrap/scss/bootstrap";
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  border-color: white !important;
+  outline-color: white !important;
+  box-shadow: 0 0 0 0.2rem rgba(0, 0, 48, 0.25) !important;
+}
