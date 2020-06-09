@@ -13,11 +13,9 @@
  *= require_tree .
  *= require_self
  */
-
 $dark: #1A242E;
 $light: #DEDEDE;
-@import url(http://fonts.googleapis.com/css?family=Rosario:400,300,700);
-$font-family-sans-serif: Rosario, sans-serif;
+$font-family-sans-serif: 'Rosario', sans-serif;
 @import "bootstrap/scss/bootstrap";
 
 input:focus,
