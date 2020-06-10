@@ -5,6 +5,7 @@ const Hello = props => (
   <>
     <div>Hello {props.name}! THIS IS YOUR TODO LIST SOMEDAY</div>
     <div className="text-info">Now we see if bootstrap is up</div>
+    <p>And fontawesome yaaaay <i class="far fa-smile-beam"></i></p>
   </>
 )
 
