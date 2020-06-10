@@ -10,6 +10,12 @@ body {
   background-image:
     linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)),
     asset_url("juan-burgos-_Te_aXfSQ0Y-unsplash.jpg");
+  background-size: cover;
+}
 
-background-size: cover;
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0);
 }
