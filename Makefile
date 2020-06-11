@@ -1,6 +1,12 @@
 APP_NAME=sei-whatdo
 DB_NAME=proj_whatdo_development
 
+dbredo:
+	rails db:drop
+	rails db:create
+	rails db:migrate
+	rails db:seed
+
 dbreload:
 	rails db:drop
 	rails db:create

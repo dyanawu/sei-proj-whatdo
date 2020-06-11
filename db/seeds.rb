@@ -43,10 +43,10 @@ end
   puts "created list '#{list.name}' for user '#{list.user.username}'"
 end
 
-25.times do
+50.times do
   list = List.find(rand(List.first.id..List.last.id))
   tag = Tag.find(rand(Tag.first.id..Tag.last.id))
-  list.tags << tag
+  list.tags << tag unless list.tags.include?(tag)
   puts "added tag '#{tag.name}' to list '#{list.name}'"
 end
 
