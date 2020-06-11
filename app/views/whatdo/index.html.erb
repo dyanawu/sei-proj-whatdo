@@ -1,3 +1,32 @@
-<div id="root">
+<div class="container-fluid px-0 header">
+  <div class="row no-gutters d-flex justify-content-between bg-dark text-light">
+    <a href="/" class="btn btn-lg my-auto ml-2 btn-dark text-light">
+      <span class="h2 testclass">
+        What Do?
+      </span>
+    </a>
+    <span class="my-auto pr-4 rightbutton">
+      <%= link_to destroy_user_session_path, :method => :delete, :class => "text-light" do %>
+        <span>
+          Sign Out
+          <i class="fas fa-sign-out-alt"></i>
+        </span>
+      <% end %>
+    </span>
+  </div>
+
+
+  <div class="row no-gutters">
+    <div class="col-3 no-gutters bg-light p-4">
+      <div id="sidebar">
+      </div>
+    </div>
+    <div class="col-9 no-gutters bg-info p-4">
+      <div id="todos">
+      </div>
+    </div>
+  </div>
 </div>
-<%= javascript_pack_tag 'whatdo/app' %>
+
+<%= javascript_pack_tag 'whatdo/todos' %>
+<%= javascript_pack_tag 'whatdo/sidebar' %>
