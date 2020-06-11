@@ -7,4 +7,6 @@ Rails.application.routes.draw do
 
   root to: 'whatdo#index'
   get '/landing', to: 'landing#landingpage', as: 'landing'
+  get '/taglists/:id', to: 'tags#taglists'
+  get 'listtags/:id', to: 'lists#listtags'
 end

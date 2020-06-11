@@ -1,5 +1,5 @@
 class TagsController < ApplicationController
-  before_action :set_tag, only: [:show, :edit, :update, :destroy]
+  before_action :set_tag, only: [:show, :edit, :update, :destroy, :taglists]
   before_action :authenticate_user!
 
   # GET /tags
@@ -11,6 +11,17 @@ class TagsController < ApplicationController
   # GET /tags/1
   # GET /tags/1.json
   def show
+  end
+
+  def taglists
+    @lists = @tag.lists
+
+    respond_to do |format|
+      format.json {
+        render :json => @lists
+      }
+      format.html
+    end
   end
 
   # GET /tags/new
