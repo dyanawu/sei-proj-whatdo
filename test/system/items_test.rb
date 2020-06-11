@@ -14,7 +14,7 @@ class ItemsTest < ApplicationSystemTestCase
     visit items_url
     click_on "New Item"
 
-    fill_in "List", with: @item.List_id
+    fill_in "List", with: @item.list_id
     check "Done" if @item.done
     fill_in "Name", with: @item.name
     click_on "Create Item"
@@ -27,7 +27,7 @@ class ItemsTest < ApplicationSystemTestCase
     visit items_url
     click_on "Edit", match: :first
 
-    fill_in "List", with: @item.List_id
+    fill_in "List", with: @item.list_id
     check "Done" if @item.done
     fill_in "Name", with: @item.name
     click_on "Update Item"
