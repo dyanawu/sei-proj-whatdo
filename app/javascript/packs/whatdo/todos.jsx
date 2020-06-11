@@ -2,6 +2,23 @@ import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 import axios from 'axios'
 
+class Items extends Component {
+    render() {
+    let items = this.props.items || [];
+    const itemDots = items.map(i => {
+      return (
+        <li key={i.id}>{i.name} </li>
+      )
+    });
+
+    return(
+      <>
+      {itemDots}
+      </>
+    );
+  }
+}
+
 class Tags extends Component {
   render() {
     let tags = this.props.tags || [];
@@ -20,12 +37,13 @@ class Tags extends Component {
 }
 
 
-class Todo extends Component {
+class List extends Component {
   constructor() {
     super();
 
     this.state = {
-      tags: []
+      tags: [],
+      items: []
     };
   }
 
@@ -40,6 +58,16 @@ class Todo extends Component {
       .catch(err => console.log(err));
   }
 
+  fetchListItems(id) {
+    const url = `/listitems/${id}.json`;
+    axios
+      .get(url)
+      .then(res => {
+        const data = res.data;
+        this.setState({items: data});
+      })
+      .catch(err => console.log(err));
+  }
 
   render() {
     let l = this.props.todo;
@@ -53,6 +81,11 @@ class Todo extends Component {
               <h3 className="card-title">{l.name}</h3>
             </div>
             <div className="card-body">
+              <ul>
+                <Items items={this.state.items} />
+              </ul>
+            </div>
+            <div className="card-footer">
               <Tags tags={this.state.tags} />
             </div>
           </div>
@@ -62,6 +95,7 @@ class Todo extends Component {
 
   componentDidMount() {
     this.fetchListTags(this.props.todo.id);
+    this.fetchListItems(this.props.todo.id);
   }
 }
 
@@ -71,7 +105,7 @@ export default class Todos extends Component {
 
     const listCards =  lists.map(l => {
       return (
-        <Todo todo={l}
+        <List todo={l}
               key={l.id}/>
       );
     });
