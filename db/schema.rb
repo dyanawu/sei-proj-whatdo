@@ -43,9 +43,9 @@ ActiveRecord::Schema.define(version: 2020_06_11_144753) do
 
   create_table "tags", force: :cascade do |t|
     t.string "name", limit: 50, null: false
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_tags_on_user_id"
   end
 
@@ -65,5 +65,4 @@ ActiveRecord::Schema.define(version: 2020_06_11_144753) do
 
   add_foreign_key "items", "lists"
   add_foreign_key "lists", "users"
-  add_foreign_key "tags", "users"
 end
