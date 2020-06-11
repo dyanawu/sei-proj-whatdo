@@ -1,15 +1,31 @@
-import React from 'react'
+import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 
-const Sidebar = props => (
-  <p className="text-danger">
-    someday we'll be a sidebar if we're very good
-  </p>
-)
-
-document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(
-    <Sidebar/>,
-    document.getElementById('sidebar'),
-  )
-})
+export default class Sidebar extends Component {
+  render() {
+    const tags = this.props.tags;
+    const tagList = tags.map(t => {
+      return (
+        <>
+          <a
+            key={t.id + t.name}
+            id={t.id}
+            href="#"
+            className="nav-item nav-link"
+            onClick={(e) => this.props.fetchListsByTag(e.target.id)}
+          >
+            {t.name}
+          </a>
+        </>
+      )
+    });
+    return (
+      <>
+        <h4>lists</h4>
+        <nav className="nav flex-column">
+          {tagList}
+        </nav>
+      </>
+    );
+  }
+}
