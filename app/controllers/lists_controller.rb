@@ -13,6 +13,16 @@ class ListsController < ApplicationController
   def show
   end
 
+  def untaggedlists
+    @lists = List.left_outer_joins(:tags).where( tags: {id: nil} )
+    respond_to do |format|
+      format.json {
+        render :json => @lists
+      }
+      format.html
+    end
+  end
+
   def listtags
     @tags = @list.tags
 
