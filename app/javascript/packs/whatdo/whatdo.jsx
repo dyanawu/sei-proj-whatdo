@@ -62,7 +62,7 @@ class WhatDo extends Component {
   render() {
     return (
       <>
-        <div className="col-2 no-gutters p-4">
+        <div className="col-md-2 no-gutters p-4">
           <Sidebar
             tags={this.state.tags}
             fetchUntaggedLists={() => this.fetchUntaggedLists()}
@@ -70,7 +70,7 @@ class WhatDo extends Component {
             fetchListsByTag={(id) => this.fetchListsByTag(id)}
           />
         </div>
-        <div className="col-10 no-gutter p-3">
+        <div className="col-md-10 no-gutter p-3">
           <Todos lists={this.state.lists}/>
         </div>
       </>

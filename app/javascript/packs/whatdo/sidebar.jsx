@@ -23,44 +23,30 @@ export default class Sidebar extends Component {
     });
     return (
       <>
-        <h6>
-          <a
-            href="#"
-            className="nav-item nav-link text-muted"
-            onClick={(e) => this.props.fetchLists()}
-          >
-            all lists
-          </a>
-        </h6>
-        <h6>
-          <a
-            href="#"
-            className="nav-item nav-link disabled"
-          >
-            tags
-          </a>
-        </h6>
+        <a
+          href="#"
+          className="nav-item nav-link text-muted"
+          onClick={(e) => this.props.fetchLists()}
+        >
+          all lists
+        </a>
         <nav className="nav flex-column">
           {tagList}
         </nav>
-        <h6>
-          <a
-            href="#"
-            className="nav-item nav-link text-muted"
-            onClick={(e) => this.props.fetchUntaggedLists()}
-          >
-            untagged lists
-          </a>
-        </h6>
-        <h6>
-          <a
-            href="#"
-            className="nav-item nav-link text-muted"
-            onClick={(e) => console.log(e)}
-          >
-            TODO: edit tags
-          </a>
-        </h6>
+        <a
+          href="#"
+          className="nav-item nav-link text-muted"
+          onClick={(e) => this.props.fetchUntaggedLists()}
+        >
+          untagged lists
+        </a>
+        <a
+          href="#"
+          className="nav-item nav-link text-muted"
+          onClick={(e) => console.log(e)}
+        >
+          TODO: edit tags
+        </a>
       </>
     );
   }
