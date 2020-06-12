@@ -9,7 +9,7 @@ export default class Tags extends Component {
         <Fragment key={t.id}
 >
           <span
-            className="badge badge-pill badge-dark"
+            className="badge badge-pill badge-light"
           >
             {t.name}
           </span>

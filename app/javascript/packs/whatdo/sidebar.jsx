@@ -14,7 +14,7 @@ export default class Sidebar extends Component {
           key={t.id + t.name}
           id={t.id}
           href="#"
-          className="nav-item nav-link"
+          className="nav-item nav-link text-muted"
           onClick={(e) => this.clickHandler(e)}
         >
           {t.name}
@@ -26,7 +26,7 @@ export default class Sidebar extends Component {
         <h4>
           <a
             href="#"
-            className="nav-item nav-link"
+            className="nav-item nav-link text-muted"
             onClick={(e) => this.props.fetchLists()}
           >
             all lists
@@ -46,7 +46,7 @@ export default class Sidebar extends Component {
         <h4>
           <a
             href="#"
-            className="nav-item nav-link"
+            className="nav-item nav-link text-muted"
             onClick={(e) => this.props.fetchUntaggedLists()}
           >
             untagged lists
@@ -55,7 +55,7 @@ export default class Sidebar extends Component {
         <h4>
           <a
             href="#"
-            className="nav-item nav-link"
+            className="nav-item nav-link text-muted"
             onClick={(e) => console.log(e)}
           >
             TODO: edit tags

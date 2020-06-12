@@ -16,7 +16,7 @@ export default class ListModal extends Component {
       <Fragment key={modalTarget}>
         <button
           type="button"
-          className="btn btn-dark btn-block"
+          className="btn btn-dark btn-block "
           data-toggle="modal"
           data-target={modalTarget}
         >

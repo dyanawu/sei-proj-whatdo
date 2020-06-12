@@ -46,11 +46,10 @@ export default class List extends Component {
         className="col-sm-12 col-md-6 col-lg-4 col-xl-3 mb-3 px-1"
       >
         <div
-          className="card list-card"
-          style={{width: "18rem"}}
+          className="card list-card w-90"
         >
           <div
-            className="card-header p-0"
+            className="card-header p-1"
           >
 
             <ListModal
