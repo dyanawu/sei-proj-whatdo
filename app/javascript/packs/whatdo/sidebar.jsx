@@ -23,7 +23,7 @@ export default class Sidebar extends Component {
     });
     return (
       <>
-        <h4>
+        <h6>
           <a
             href="#"
             className="nav-item nav-link text-muted"
@@ -31,19 +31,19 @@ export default class Sidebar extends Component {
           >
             all lists
           </a>
-        </h4>
-        <h4>
+        </h6>
+        <h6>
           <a
             href="#"
             className="nav-item nav-link disabled"
           >
             tags
           </a>
-        </h4>
+        </h6>
         <nav className="nav flex-column">
           {tagList}
         </nav>
-        <h4>
+        <h6>
           <a
             href="#"
             className="nav-item nav-link text-muted"
@@ -51,8 +51,8 @@ export default class Sidebar extends Component {
           >
             untagged lists
           </a>
-        </h4>
-        <h4>
+        </h6>
+        <h6>
           <a
             href="#"
             className="nav-item nav-link text-muted"
@@ -60,7 +60,7 @@ export default class Sidebar extends Component {
           >
             TODO: edit tags
           </a>
-        </h4>
+        </h6>
       </>
     );
   }
