@@ -13,11 +13,10 @@
  *= require_tree .
  *= require_self
  */
-$dark: #1A242E;
-$light: #DEDEDE;
 $font-family-sans-serif: 'Rosario', sans-serif;
 $fa-font-path: "@fortawesome/fontawesome-free/webfonts";
 
+@import "colors";
 @import "@fortawesome/fontawesome-free/css/all";
 @import "@fortawesome/fontawesome-free/scss/brands";
 @import "@fortawesome/fontawesome-free/scss/fontawesome";
