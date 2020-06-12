@@ -5,9 +5,11 @@ export default class ListForm extends Component {
   render() {
 
     return (
-      <form>
-        <input />
-      </form>
+      <button
+        className="btn btn-large btn-dark"
+      >
+        add list
+      </button>
     );
   }
 }
