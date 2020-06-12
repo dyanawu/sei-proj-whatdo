@@ -37,6 +37,17 @@ class WhatDo extends Component {
       .catch(err => console.log(err));
   }
 
+  fetchUntaggedLists() {
+    const url = '/untaggedlists.json';
+    axios
+      .get(url)
+      .then(res => {
+        const data = res.data;
+        this.setState({ lists: data });
+      })
+      .catch(err => console.log(err));
+  }
+
   fetchListsByTag(id) {
     const url = `/taglists/${id}.json`;
     axios
@@ -54,11 +65,12 @@ class WhatDo extends Component {
         <div className="col-2 no-gutters p-4">
           <Sidebar
             tags={this.state.tags}
+            fetchUntaggedLists={() => this.fetchUntaggedLists()}
             fetchLists={() => this.fetchLists()}
             fetchListsByTag={(id) => this.fetchListsByTag(id)}
           />
         </div>
-        <div className="col-10 no-gutters p-4">
+        <div className="col-10 no-gutter p-3">
           <Todos lists={this.state.lists}/>
         </div>
       </>
