@@ -54,6 +54,7 @@ class WhatDo extends Component {
         <div className="col-2 no-gutters p-4">
           <Sidebar
             tags={this.state.tags}
+            fetchLists={() => this.fetchLists()}
             fetchListsByTag={(id) => this.fetchListsByTag(id)}
           />
         </div>

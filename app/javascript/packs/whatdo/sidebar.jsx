@@ -21,7 +21,14 @@ export default class Sidebar extends Component {
     });
     return (
       <>
-        <h4>lists</h4>
+        <h4>tags</h4>
+          <a
+            href="#"
+            className="nav-item nav-link"
+            onClick={(e) => this.props.fetchLists()}
+          >
+            all lists
+          </a>
         <nav className="nav flex-column">
           {tagList}
         </nav>
