@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component, Fragment} from 'react'
 import ReactDOM from 'react-dom'
 
 export default class Tags extends Component {
@@ -6,7 +6,15 @@ export default class Tags extends Component {
     let tags = this.props.tags || [];
     const tagDots = tags.map(t => {
       return (
-        <span key={t.id}>{t.name} </span>
+        <Fragment key={t.id}
+>
+          <span
+            className="badge badge-pill badge-dark"
+          >
+            {t.name}
+          </span>
+          <span>&nbsp;</span>
+        </Fragment>
       )
     });
 
