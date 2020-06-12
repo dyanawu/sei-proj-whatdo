@@ -4,6 +4,7 @@ import axios from 'axios'
 
 import Items from './items'
 import Tags from './tags'
+import ListModal from './listmodal'
 
 export default class List extends Component {
   constructor() {
@@ -38,17 +39,8 @@ export default class List extends Component {
       .catch(err => console.log(err));
   }
 
-  showList(e) {
-    const ele = e.target
-    this.setState({currentList: ele.dataset.listid},
-                  () => {
-                    console.log(this.state);
-                    this.fetchListItems(this.state.currentList);
-    });
-  }
-
   render() {
-    let l = this.props.list;
+    const l = this.props.list;
     return (
       <div
         className="col-sm-12 col-md-6 col-lg-4 col-xl-3 mb-3 px-1"
@@ -61,21 +53,11 @@ export default class List extends Component {
             className="card-header p-0"
           >
 
-            <button
-              type="button"
-              className="btn btn-dark btn-block"
-              data-toggle="modal"
-              data-target="#exampleModal"
-              data-listid={l.id}
-              onClick={(e) => this.showList(e)}
-            >
-              {l.name}
-            </button>
-            <Modal>
-              <ul>
-                <Items items={this.state.items} />
-              </ul>
-            </Modal>
+            <ListModal
+              list={l}
+              items={this.state.items}
+              tags={this.state.tags}
+            />
 
           </div>
           <div className="card-body">
@@ -94,34 +76,6 @@ export default class List extends Component {
   componentDidMount() {
     this.fetchListTags(this.props.list.id);
     this.fetchListItems(this.props.list.id);
-  }
-}
-
-
-class Modal extends Component {
-  render() {
-    const children = this.props.children;
-
-    return (
-      <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div className="modal-dialog" role="document">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
-              <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div className="modal-body">
-              {children}
-            </div>
-            <div className="modal-footer">
-              <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" className="btn btn-primary">Save changes</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
+    this.setState({currentList: this.props.list.id});
   }
 }

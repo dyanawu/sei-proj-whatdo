@@ -21,7 +21,7 @@ export default class Todos extends Component {
           <ListForm
           />
         </div>
-        <div className="row my-3 px-3">
+        <div className="row my-3 px-3 flex-sm-grow-1">
           {listCards}
         </div>
       </>
