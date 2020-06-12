@@ -37,16 +37,32 @@ export default class List extends Component {
       .catch(err => console.log(err));
   }
 
+  showList(e) {
+    const ele = e.target;
+    console.log(ele.dataset.listid);
+  }
+
   render() {
-    let l = this.props.todo;
+    let l = this.props.list;
     return (
-        <div className="col-sm-12 col-md-6 col-lg-4 col-xl-3 mb-3 px-1" key={l.id}>
+      <div
+        className="col-sm-12 col-md-6 col-lg-4 col-xl-3 mb-3 px-1"
+      >
           <div
-            id={l.id}
             className="card list-card"
+            style={{width: "18rem"}}
           >
-            <div className="card-header">
-              <h3 className="card-title">{l.name}</h3>
+            <div
+              data-listid={l.id}
+              className="card-header clickable"
+              onClick={(e) => this.showList(e)}
+            >
+              <h3
+                data-listid={l.id}
+                className="card-title"
+              >
+                {l.name}
+              </h3>
             </div>
             <div className="card-body">
               <ul>
@@ -62,7 +78,7 @@ export default class List extends Component {
   }
 
   componentDidMount() {
-    this.fetchListTags(this.props.todo.id);
-    this.fetchListItems(this.props.todo.id);
+    this.fetchListTags(this.props.list.id);
+    this.fetchListItems(this.props.list.id);
   }
 }
