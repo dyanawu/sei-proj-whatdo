@@ -14,7 +14,7 @@ class TagsController < ApplicationController
   end
 
   def taglists
-    @lists = @tag.lists
+    @lists = @tag.lists.order(:id)
 
     respond_to do |format|
       format.json {

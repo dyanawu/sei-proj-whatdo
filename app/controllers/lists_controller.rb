@@ -14,7 +14,7 @@ class ListsController < ApplicationController
   end
 
   def untaggedlists
-    @lists = List.left_outer_joins(:tags).where( tags: {id: nil} )
+    @lists = List.left_outer_joins(:tags).where( tags: {id: nil} ).order(:id)
     respond_to do |format|
       format.json {
         render :json => @lists
@@ -24,7 +24,7 @@ class ListsController < ApplicationController
   end
 
   def listtags
-    @tags = @list.tags
+    @tags = @list.tags.order(:id)
 
     respond_to do |format|
       format.json {
@@ -35,7 +35,7 @@ class ListsController < ApplicationController
   end
 
   def listitems
-    @items = @list.items
+    @items = @list.items.order(:id)
 
     respond_to do |format|
       format.json {
