@@ -6,7 +6,18 @@ import Item from './components/item'
 export default class ItemList extends Component {
   render() {
     const items = this.props.items;
-    const itemCards = items.map(i => {
+
+    const undoneItems = items.filter(i => i.done === false)
+    const doneItems = items.filter(i => i.done === true)
+    const undoneItemCards = undoneItems.map(i => {
+      return (
+        <Item
+          item={i}
+          key={i.id}/>
+      );
+    });
+
+    const doneItemCards = doneItems.map(i => {
       return (
         <Item
           item={i}
@@ -33,7 +44,10 @@ export default class ItemList extends Component {
           {listButtons}
         </div>
         <div className="row my-3 px-3 flex-sm-grow-1">
-          {itemCards}
+          {undoneItemCards}
+        </div>
+        <div className="row my-3 px-3 flex-sm-grow-1">
+          {doneItemCards}
         </div>
       </>
     );
