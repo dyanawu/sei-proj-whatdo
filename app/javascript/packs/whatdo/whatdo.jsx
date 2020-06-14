@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import axios from 'axios'
 
 import Sidebar from './sidebar'
-import ItemList from './itemlist'
+import List from './list'
 
 class WhatDo extends Component {
   constructor() {
@@ -13,7 +13,8 @@ class WhatDo extends Component {
       lists: [],
       items: [],
       currentList: undefined,
-      newListtitle: undefined
+      newListName: undefined,
+      newItemName: undefined
     };
   }
 
@@ -49,13 +50,14 @@ class WhatDo extends Component {
         const data = res.data;
         this.setState({items: data});
         this.setState({currentList: id});
+        this.setState({newItemName: undefined});
       })
       .catch(err => console.log(err));
   }
 
   setList(e) {
     this.setState({
-      newListTitle: e.target.value
+      newListName: e.target.value
     });
   }
 
@@ -72,12 +74,12 @@ class WhatDo extends Component {
 
     axios
       .post(url, {
-        name: this.state.newListTitle,
+        name: this.state.newListName,
       })
       .then((res) => {
         let newList = res.data;
         this.setState({lists: [...this.state.lists, newList]});
-        this.setState({newListTitle: undefined});
+        this.setState({newListName: undefined});
       })
       .catch((err) => {
         console.error(err);
@@ -117,7 +119,7 @@ class WhatDo extends Component {
           />
         </div>
         <div className="col-md-10 no-gutter p-3">
-          <ItemList
+          <List
             currentList={this.state.currentList}
             lists={this.state.lists}
             items={this.state.items}
