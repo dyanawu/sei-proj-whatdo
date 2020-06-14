@@ -31,6 +31,7 @@ export default class ModalForm extends Component {
                   <button
                     type="submit"
                     className="btn btn-block btn-dark"
+                    data-dismiss="modal"
                     onClick={() => this.props.addList()}
                   >
                     create list
