@@ -25,6 +25,7 @@ export default class ModalForm extends Component {
                     <input
                       type="text"
                       className="form-control"
+                      value={this.props.newListName || ""}
                       onChange={(e) => this.props.setList(e)}
                     />
                   </div>

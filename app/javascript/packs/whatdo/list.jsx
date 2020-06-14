@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom'
 import ListForm from './components/listform'
 import Item from './components/item'
 
-export default class ItemList extends Component {
+export default class List extends Component {
   render() {
     const items = this.props.items;
 
@@ -28,14 +28,17 @@ export default class ItemList extends Component {
 
     const listForm = this.props.currentList ?
                      (<ListForm
+                        newItemName={this.props.newItemName}
                         currentList={this.props.currentList}
                         delList={(id) => this.props.delList(id)}
+                        setItem={(e) => this.props.setItem(e)}
+                        addItemToList={(item, list) => this.props.addItemToList(item, list)}
                      />) :
                      ""
 
     return (
       <>
-        <div className="row d-flex justify-content-around">
+        <div className="row my-3 px-3 flex-sm-grow-1">
           {listForm}
         </div>
         <div className="row my-3 px-3 flex-sm-grow-1">

@@ -78,8 +78,13 @@ class WhatDo extends Component {
       })
       .then((res) => {
         let newList = res.data;
-        this.setState({lists: [...this.state.lists, newList]});
-        this.setState({newListName: undefined});
+        this.setState({
+          lists: [...this.state.lists, newList],
+          newListName: undefined,
+          currentList: newList.id
+        });
+        this.fetchListItems(newList.id);
+        console.log(this.state);
       })
       .catch((err) => {
         console.error(err);
@@ -106,12 +111,24 @@ class WhatDo extends Component {
       });
   }
 
+  setItem(e) {
+    this.setState({newItemName: e.target.value});
+    console.log(this.state.newItemName);
+  }
+
+  addItemToList(item, listId) {
+    console.log("add to", listId);
+    console.log(item);
+    this.setState({newItemName: undefined});
+  }
+
   render() {
     return (
       <>
         <div className="col-md-2 no-gutters p-4">
           <Sidebar
             lists={this.state.lists}
+            newListName={this.state.newListName}
             fetchItems={() => this.fetchItems()}
             fetchListItems={(id) => this.fetchListItems(id)}
             setList={(e) => this.setList(e)}
@@ -120,10 +137,12 @@ class WhatDo extends Component {
         </div>
         <div className="col-md-10 no-gutter p-3">
           <List
-            currentList={this.state.currentList}
-            lists={this.state.lists}
             items={this.state.items}
+            newItemName={this.state.newItemName}
+            currentList={this.state.currentList}
             delList={(id) => this.delList(id)}
+            setItem={(e) => this.setItem(e)}
+            addItemToList={(item, list) => this.addItemToList(item, list)}
           />
         </div>
       </>
