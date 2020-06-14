@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 
+import ListForm from './components/listform'
 import Item from './components/item'
 
 export default class ItemList extends Component {
@@ -25,23 +26,17 @@ export default class ItemList extends Component {
       );
     });
 
-    let listButtons;
-    if (this.props.currentList) {
-      listButtons = (
-        <button
-          onClick={() => this.props.delList(this.props.currentList)}
-          className="btn btn-dark"
-        >
-          delete list
-        </button>
-      );
-    } else {
-    }
+    const listForm = this.props.currentList ?
+                     (<ListForm
+                        currentList={this.props.currentList}
+                        delList={(id) => this.props.delList(id)}
+                     />) :
+                     ""
 
     return (
       <>
         <div className="row d-flex justify-content-around">
-          {listButtons}
+          {listForm}
         </div>
         <div className="row my-3 px-3 flex-sm-grow-1">
           {undoneItemCards}
