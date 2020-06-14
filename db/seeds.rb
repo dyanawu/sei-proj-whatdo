@@ -23,15 +23,21 @@ User.create!(
   password: "hihihi"
 )
 
-10.times do
+User.create!(
+  email: "ko@ko",
+  username: "koko",
+  password: "kokoko"
+)
+
+20.times do
   list = List.create!(
     name: Faker::Verb.unique.ing_form,
-    user_id: User.first.id
+    user_id: rand(User.first.id..User.last.id)
   )
   puts "created list '#{list.name}' for user '#{list.user.username}'"
 end
 
-50.times do
+100.times do
   list = List.find(rand(List.first.id..List.last.id))
   item = Item.create!(
     name: Faker::Company.unique.bs,
