@@ -27,6 +27,7 @@ export default class Sidebar extends Component {
       <>
         <nav className="nav nav-pills flex-column">
           <ModalForm
+            newListName={this.props.newListName}
             setList={(e) => this.props.setList(e)}
             addList={() => this.props.addList()}
           />
