@@ -5,7 +5,7 @@ class ListsController < ApplicationController
   # GET /lists
   # GET /lists.json
   def index
-    @lists = List.where(user_id: current_user.id)
+    @lists = List.where(user_id: current_user.id).order(:id)
   end
 
   # GET /lists/1
@@ -14,12 +14,10 @@ class ListsController < ApplicationController
   end
 
   def listitems
-    @items = @list.items.order(:id)
+    @items = @list.items.order(:done, :id)
 
     respond_to do |format|
-      format.json {
-        render :json => @items
-      }
+      format.json { render json: @items }
       format.html
     end
   end
@@ -42,7 +40,7 @@ class ListsController < ApplicationController
     respond_to do |format|
       if @list.save
         format.html { redirect_to @list, notice: 'List was successfully created.' }
-        format.json { render :show, status: :created, location: @list }
+        format.json { render json: @list }
       else
         format.html { render :new }
         format.json { render json: @list.errors, status: :unprocessable_entity }
@@ -56,7 +54,7 @@ class ListsController < ApplicationController
     respond_to do |format|
       if @list.update(list_params)
         format.html { redirect_to @list, notice: 'List was successfully updated.' }
-        format.json { render :show, status: :ok, location: @list }
+        format.json { render json: @list }
       else
         format.html { render :edit }
         format.json { render json: @list.errors, status: :unprocessable_entity }

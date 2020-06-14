@@ -5,7 +5,8 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = Item.all
+    @lists = List.where(user_id: current_user.id)
+    @items = Item.where(list_id: [@lists]).order(:done, :id)
   end
 
   # GET /items/1
@@ -26,11 +27,12 @@ class ItemsController < ApplicationController
   # POST /items.json
   def create
     @item = Item.new(item_params)
+    @item.done = false
 
     respond_to do |format|
       if @item.save
         format.html { redirect_to @item, notice: 'Item was successfully created.' }
-        format.json { render :show, status: :created, location: @item }
+        format.json { render json: @item }
       else
         format.html { render :new }
         format.json { render json: @item.errors, status: :unprocessable_entity }
@@ -44,7 +46,7 @@ class ItemsController < ApplicationController
     respond_to do |format|
       if @item.update(item_params)
         format.html { redirect_to @item, notice: 'Item was successfully updated.' }
-        format.json { render :show, status: :ok, location: @item }
+        format.json { render json: @item }
       else
         format.html { render :edit }
         format.json { render json: @item.errors, status: :unprocessable_entity }
@@ -70,6 +72,6 @@ class ItemsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def item_params
-      params.require(:item).permit(:name, :done, :list_id)
+      params.require(:item).permit(:name, :list_id)
     end
 end
