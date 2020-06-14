@@ -11,7 +11,8 @@ class WhatDo extends Component {
 
     this.state = {
       lists: [],
-      items: []
+      items: [],
+      currentList: undefined
     };
   }
 
@@ -38,6 +39,7 @@ class WhatDo extends Component {
   }
 
   fetchListItems(id) {
+    this.setState({currentList: id});
     const url = `/listitems/${id}.json`;
     axios
       .get(url)
@@ -54,11 +56,15 @@ class WhatDo extends Component {
         <div className="col-md-2 no-gutters p-4">
           <Sidebar
             lists={this.state.lists}
+            fetchItems={() => this.fetchItems()}
             fetchListItems={(id) => this.fetchListItems(id)}
           />
         </div>
         <div className="col-md-10 no-gutter p-3">
-          <Todos items={this.state.items}/>
+          <Todos
+            currentList={this.state.currentList}
+            lists={this.state.lists}
+            items={this.state.items}/>
         </div>
       </>
     );

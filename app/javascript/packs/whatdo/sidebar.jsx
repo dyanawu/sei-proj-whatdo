@@ -1,10 +1,10 @@
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 
+import ListForm from './components/listform'
+
 export default class Sidebar extends Component {
   clickHandler(e) {
-    console.log(e.target);
-    console.log(e.target.id);
     this.props.fetchListItems(e.target.id);
   }
 
@@ -25,16 +25,22 @@ export default class Sidebar extends Component {
     });
     return (
       <>
+      <nav className="nav nav-pills flex-column">
         <a
           href="#"
           className="nav-item nav-link text-muted"
-          onClick={(e) => this.props.fetchLists()}
         >
-          all lists
+          add list
         </a>
-        <nav className="nav flex-column">
-          {listEles}
-        </nav>
+        <a
+          href="#"
+          className="nav-item nav-link text-muted"
+          onClick={() => this.props.fetchItems()}
+        >
+          all items
+        </a>
+        {listEles}
+      </nav>
       </>
     );
   }
