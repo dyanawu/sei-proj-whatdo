@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 
-import ListForm from './components/listform'
+import ModalForm from './components/modalform'
 
 export default class Sidebar extends Component {
   clickHandler(e) {
@@ -25,13 +25,11 @@ export default class Sidebar extends Component {
     });
     return (
       <>
-      <nav className="nav nav-pills flex-column">
-        <a
-          href="#"
-          className="nav-item nav-link text-muted"
-        >
-          add list
-        </a>
+        <nav className="nav nav-pills flex-column">
+          <ModalForm
+            setList={(e) => this.props.setList(e)}
+            addList={() => this.props.addList()}
+          />
         <a
           href="#"
           className="nav-item nav-link text-muted"
