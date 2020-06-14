@@ -1,17 +1,17 @@
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 
-import List from './components/list'
+import Item from './components/item'
 import ListForm from './components/listform'
 
 export default class Todos extends Component {
   render() {
-    const lists = this.props.lists;
-
-    const listCards = lists.map(l => {
+    const items = this.props.items;
+    const itemCards = items.map(i => {
       return (
-        <List list={l}
-              key={l.id}/>
+        <Item
+          item={i}
+          key={i.id}/>
       );
     });
 
@@ -22,7 +22,7 @@ export default class Todos extends Component {
           />
         </div>
         <div className="row my-3 px-3 flex-sm-grow-1">
-          {listCards}
+          {itemCards}
         </div>
       </>
     );

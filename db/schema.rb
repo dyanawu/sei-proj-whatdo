@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_11_201113) do
+ActiveRecord::Schema.define(version: 2020_06_11_144753) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,24 +30,6 @@ ActiveRecord::Schema.define(version: 2020_06_11_201113) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_lists_on_user_id"
-  end
-
-  create_table "lists_tags", force: :cascade do |t|
-    t.bigint "list_id"
-    t.bigint "tag_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["list_id", "tag_id"], name: "by_list_and_tag", unique: true
-    t.index ["list_id"], name: "index_lists_tags_on_list_id"
-    t.index ["tag_id"], name: "index_lists_tags_on_tag_id"
-  end
-
-  create_table "tags", force: :cascade do |t|
-    t.string "name", limit: 50, null: false
-    t.bigint "user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_tags_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

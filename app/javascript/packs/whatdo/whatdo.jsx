@@ -10,20 +10,9 @@ class WhatDo extends Component {
     super();
 
     this.state = {
-      tags: [],
-      lists: []
+      lists: [],
+      items: []
     };
-  }
-
-  fetchTags() {
-    const url = '/tags.json';
-    axios
-      .get(url)
-      .then(res => {
-        const data = res.data;
-        this.setState({ tags: data });
-      })
-      .catch(err => console.log(err));
   }
 
   fetchLists() {
@@ -37,24 +26,24 @@ class WhatDo extends Component {
       .catch(err => console.log(err));
   }
 
-  fetchUntaggedLists() {
-    const url = '/untaggedlists.json';
+  fetchItems() {
+    const url = '/items.json';
     axios
       .get(url)
       .then(res => {
         const data = res.data;
-        this.setState({ lists: data });
+        this.setState({ items: data });
       })
       .catch(err => console.log(err));
   }
 
-  fetchListsByTag(id) {
-    const url = `/taglists/${id}.json`;
+  fetchListItems(id) {
+    const url = `/listitems/${id}.json`;
     axios
       .get(url)
       .then(res => {
         const data = res.data;
-        this.setState({ lists: data });
+        this.setState({items: data});
       })
       .catch(err => console.log(err));
   }
@@ -64,22 +53,20 @@ class WhatDo extends Component {
       <>
         <div className="col-md-2 no-gutters p-4">
           <Sidebar
-            tags={this.state.tags}
-            fetchUntaggedLists={() => this.fetchUntaggedLists()}
-            fetchLists={() => this.fetchLists()}
-            fetchListsByTag={(id) => this.fetchListsByTag(id)}
+            lists={this.state.lists}
+            fetchListItems={(id) => this.fetchListItems(id)}
           />
         </div>
         <div className="col-md-10 no-gutter p-3">
-          <Todos lists={this.state.lists}/>
+          <Todos items={this.state.items}/>
         </div>
       </>
     );
   }
 
   componentDidMount() {
-    this.fetchTags();
     this.fetchLists();
+    this.fetchItems();
   }
 }
 

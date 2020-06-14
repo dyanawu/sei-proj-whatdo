@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :tags
   resources :items
   resources :lists
   devise_for :users
@@ -7,8 +6,5 @@ Rails.application.routes.draw do
 
   root to: 'whatdo#index'
   get '/landing', to: 'landing#landingpage', as: 'landing'
-  get '/untaggedlists', to: 'lists#untaggedlists'
-  get '/taglists/:id', to: 'tags#taglists'
-  get '/listtags/:id', to: 'lists#listtags'
   get '/listitems/:id', to: 'lists#listitems'
 end

@@ -1,5 +1,5 @@
 class ListsController < ApplicationController
-  before_action :set_list, only: [:show, :edit, :update, :destroy, :listtags, :listitems]
+  before_action :set_list, only: [:show, :edit, :update, :destroy, :listitems]
   before_action :authenticate_user!
 
   # GET /lists
@@ -11,27 +11,6 @@ class ListsController < ApplicationController
   # GET /lists/1
   # GET /lists/1.json
   def show
-  end
-
-  def untaggedlists
-    @lists = List.left_outer_joins(:tags).where( tags: {id: nil} ).order(:id)
-    respond_to do |format|
-      format.json {
-        render :json => @lists
-      }
-      format.html
-    end
-  end
-
-  def listtags
-    @tags = @list.tags.order(:id)
-
-    respond_to do |format|
-      format.json {
-        render :json => @tags
-      }
-      format.html
-    end
   end
 
   def listitems

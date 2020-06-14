@@ -15,10 +15,6 @@
 # name       | text
 # user_id    | bigint
 
-# proj_whatdo_development=# \d tag
-# name       | text
-# user_id    | bigint
-
 require 'faker'
 
 User.create!(
@@ -27,15 +23,7 @@ User.create!(
   password: "hihihi"
 )
 
-5.times do
-  tag = Tag.create!(
-    name: "to " + Faker::Verb.unique.base,
-    user_id: User.first.id
-  )
-  puts "created tag '#{tag.name}' for user '#{tag.user.username}'"
-end
-
-30.times do
+10.times do
   list = List.create!(
     name: Faker::Verb.unique.ing_form,
     user_id: User.first.id
@@ -44,13 +32,6 @@ end
 end
 
 50.times do
-  list = List.find(rand(List.first.id..List.last.id))
-  tag = Tag.find(rand(Tag.first.id..Tag.last.id))
-  list.tags << tag unless list.tags.include?(tag)
-  puts "added tag '#{tag.name}' to list '#{list.name}'"
-end
-
-150.times do
   list = List.find(rand(List.first.id..List.last.id))
   item = Item.create!(
     name: Faker::Company.unique.bs,
