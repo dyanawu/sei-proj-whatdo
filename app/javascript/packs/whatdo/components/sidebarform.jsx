@@ -1,7 +1,7 @@
 import React, {Component, Fragment} from 'react'
 import ReactDOM from 'react-dom'
 
-export default class ListForm extends Component {
+export default class SidebarForm extends Component {
   render() {
     return (
       <Fragment>
