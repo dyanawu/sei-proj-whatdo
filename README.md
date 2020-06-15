@@ -46,6 +46,12 @@ so that
 ## Install
 Access online on [Heroku](https://sei-whatdo.herokuapp.com)
 
+|Test user:     | hihi   |
+|Test password: | hihihi |
+
+## Unsolved
+I intended to implement a tagging system, but within the available time to me decided that it was a less valuable in an MVP than the CRUD functionality I built.
+
 ## Credits
 
 - Sophia Bell for [a great guide to getting jQuery on Rails 6](https://blog.makersacademy.com/how-to-install-bootstrap-and-jquery-on-rails-6-da6e810c1b87)
