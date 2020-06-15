@@ -6,6 +6,7 @@
 
 .divider {
   border-bottom: 2px solid lightgrey;
+  color: grey
 }
 
 .list-title {
@@ -13,4 +14,8 @@
   padding: 10px 0;
   border-bottom: 2px solid $dark;
   width: 100%;
+}
+
+.done-cards {
+  filter: opacity(50%);
 }

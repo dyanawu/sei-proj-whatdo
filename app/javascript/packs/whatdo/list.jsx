@@ -34,26 +34,34 @@ export default class List extends Component {
     });
 
     const listViewForm = this.props.currentList ?
-                         (<ListViewForm
-                            newItemName={this.props.newItemName}
-                            currentList={this.props.currentList}
-                            delList={(id) => this.props.delList(id)}
-                            setItem={(e) => this.props.setItem(e)}
-                            addItemToList={(item, list) => this.props.addItemToList(item, list)}
-                         />) :
+                         (
+                           <ListViewForm
+                             newItemName={this.props.newItemName}
+                             currentList={this.props.currentList}
+                             delList={(id) => this.props.delList(id)}
+                             setItem={(e) => this.props.setItem(e)}
+                             addItemToList={(item, list) => this.props.addItemToList(item, list)}
+                           />) :
                          "";
 
     const listInfo = this.props.currentList ?
-                     (<div className="listform">
+                     (<>
                        <div className="row my-3 px-3 flex-sm-grow-1">
-                         <h4 className="list-title">{this.props.currentListName}</h4>
+                         <h4 className="list-title">
+                           {this.props.currentListName}
+                         </h4>
                        </div>
                        <div className="row mt-2 mb-5 px-3 flex-sm-grow-1">
                          {listViewForm}
                        </div>
-                     </div>
-                     ) :
-                     "";
+                     </>) :
+                     (<>
+                       <div className="row my-3 px-3 flex-sm-grow-1">
+                         <h4 className="list-title">
+                           items from all lists
+                         </h4>
+                       </div>
+                     </>);
 
     return (
       <>

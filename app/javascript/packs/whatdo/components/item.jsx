@@ -6,22 +6,11 @@ export default class Item extends Component {
     const i = this.props.item;
     const done = i.done;
     const cardClasses = done ?
-                        "card w-90 text-muted" :
+                        "card w-90 text-muted done-cards" :
                         "card w-90";
-    const statusBadgeClasses = done ?
-                               "badge badge-success p-2 text-white" :
-                               "badge badge-warning p-2";
-    const statusBadge = (
-      <span
-        className={statusBadgeClasses}
-      >
-        {i.done ? "done" : "undone"}
-      </span>
-    );
-
     const doneActionBadgeClasses = done ?
-                             "badge badge-warning p-2" :
-                             "badge badge-success p-2 text-white";
+                             "btn btn-warning btn-small p-1 text-white" :
+                             "btn btn-success btn-small p-1 text-white";
     const doneActionBadge = (
       <a
         href="#"
@@ -29,14 +18,14 @@ export default class Item extends Component {
         id={i.id}
         onClick={(e) => this.props.toggleDone(e)}
       >
-        {i.done ? "undo" : "done?"}
+        {i.done ? "undo" : "mark done"}
       </a>
     );
 
     const deleteActionBadge = (
       <a
         href="#"
-        className="badge badge-danger p-2 text-white"
+        className="btn btn-outline-dark btn-small p-1 text-dark"
         id={i.id}
         onClick={(e) => this.props.delItem(e.target.id)}
       >
@@ -57,14 +46,8 @@ export default class Item extends Component {
             {i.name}
           </div>
           <div className="card-footer d-flex justify-content-between">
-            <div>
-              {statusBadge}
-              {" "}
-              {doneActionBadge}
-            </div>
-            <div>
-              {deleteActionBadge}
-            </div>
+            {deleteActionBadge}
+            {doneActionBadge}
           </div>
         </div>
       </div>
