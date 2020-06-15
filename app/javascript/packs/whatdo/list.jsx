@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 
-import ItemForm from './components/itemform'
+import ListViewForm from './components/listviewform'
 import Item from './components/item'
 
 export default class List extends Component {
@@ -26,8 +26,8 @@ export default class List extends Component {
       );
     });
 
-    const itemForm = this.props.currentList ?
-                     (<ItemForm
+    const listViewForm = this.props.currentList ?
+                     (<ListViewForm
                         newItemName={this.props.newItemName}
                         currentList={this.props.currentList}
                         delList={(id) => this.props.delList(id)}
@@ -39,7 +39,7 @@ export default class List extends Component {
     return (
       <>
         <div className="row my-3 px-3 flex-sm-grow-1">
-          {itemForm}
+          {listViewForm}
         </div>
         <div className="row my-3 px-3 flex-sm-grow-1">
           {undoneItemCards}

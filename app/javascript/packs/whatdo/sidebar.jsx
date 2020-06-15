@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 
-import ListForm from './components/listform'
+import SidebarForm from './components/sidebarform'
 
 export default class Sidebar extends Component {
   clickHandler(e) {
@@ -26,7 +26,7 @@ export default class Sidebar extends Component {
     return (
       <>
         <nav className="nav nav-pills flex-column">
-          <ListForm
+          <SidebarForm
             newListName={this.props.newListName}
             setList={(e) => this.props.setList(e)}
             addList={() => this.props.addList()}

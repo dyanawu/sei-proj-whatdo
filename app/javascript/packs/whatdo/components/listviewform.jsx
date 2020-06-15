@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 
-export default class ItemForm extends Component {
+export default class ListViewForm extends Component {
   render() {
     const currentList = this.props.currentList;
     return (
