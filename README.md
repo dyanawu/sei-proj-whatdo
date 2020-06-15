@@ -37,13 +37,13 @@ so that
 
 ### Wireframe
 While it deviated somewhat from the original plan, the key focus of this app was the simplicity of the interface.
-<img width="50%" src='docs/whatdo_WIRE.jpg' />
+<img width="100%" src='docs/whatdo_WIRE.jpg' />
 
 ### ERD
-<img width="50%" src='docs/whatdo_ERD.png' />
+<img width="100%" src='docs/whatdo_ERD.png' />
 
 ### User Flow
-<img width="50%" src='docs/whatdo_USERFLOW.jpg' />
+<img width="100%" src='docs/whatdo_USERFLOW.jpg' />
 
 ## Install
 Access online on [Heroku](https://sei-whatdo.herokuapp.com)
@@ -64,4 +64,4 @@ I intended to implement a tagging system, but within the available time to me de
 
 - Juan Burgos for [a lovely photo](https://unsplash.com/photos/_Te_aXfSQ0Y)
 
-- [dbdiagrams.io](https://dbdiagram.io/d) makes awesome diagrams from `schema.rb` imports
+- [dbdiagram.io](https://dbdiagram.io/d) makes awesome diagrams from `schema.rb` imports
