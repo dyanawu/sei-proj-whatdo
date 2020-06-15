@@ -13,6 +13,7 @@ class WhatDo extends Component {
       lists: [],
       items: [],
       currentList: undefined,
+      currentListName: undefined,
       newListName: undefined,
       newItemName: undefined
     };
@@ -48,9 +49,13 @@ class WhatDo extends Component {
       .get(url)
       .then(res => {
         const data = res.data;
-        this.setState({items: data});
-        this.setState({currentList: id});
-        this.setState({newItemName: undefined});
+        const [list] = this.state.lists.filter((l) => l.id === parseInt(id));
+        console.log(list);
+        this.setState({
+          items: data,
+          currentList: id,
+          currentListName: list.name,
+          newItemName: undefined});
       })
       .catch(err => console.log(err));
   }
@@ -81,7 +86,8 @@ class WhatDo extends Component {
         this.setState({
           lists: [...this.state.lists, newList],
           newListName: undefined,
-          currentList: newList.id
+          currentList: newList.id,
+          currentListName: this.state.newListName
         });
         this.fetchListItems(newList.id);
       })
@@ -218,6 +224,7 @@ class WhatDo extends Component {
             items={this.state.items}
             newItemName={this.state.newItemName}
             currentList={this.state.currentList}
+            currentListName={this.state.currentListName}
             delList={(id) => this.delList(id)}
             setItem={(e) => this.setItem(e)}
             addItemToList={(item, list) => this.addItemToList(item, list)}
