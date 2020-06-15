@@ -46,8 +46,12 @@ so that
 ## Install
 Access online on [Heroku](https://sei-whatdo.herokuapp.com)
 
-|Test user:     | hihi   |
-|Test password: | hihihi |
+Either of the below test users are available for playing with without signing:
+
+|Test user | Test password |
+|---|---|
+|hihi | hihihi |
+|koko | kokoko |
 
 ## Unsolved
 I intended to implement a tagging system, but within the available time to me decided that it was a less valuable in an MVP than the CRUD functionality I built.
