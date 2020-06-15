@@ -1,12 +1,13 @@
 # What Do?
+<img width="100%" src='docs/whatdo_screenshot.png' />
 
 ## Technologies
 
-Ruby on Rails (v6.0.3.1)
-Faker
-Bootstrap (via NPM)
-React
-Axios
+- Ruby on Rails (v6.0.3.1)
+- Faker
+- Bootstrap (via NPM)
+- React
+- Axios
 
 ## Approach
 
@@ -35,10 +36,11 @@ so that
 ```
 
 ### Wireframe
+While it deviated somewhat from the original plan, the key focus of this app was the simplicity of the interface.
 <img width="50%" src='docs/whatdo_WIRE.jpg' />
 
 ### ERD
-<img width="50%" src='docs/whatdo_ERD.jpg' />
+<img width="50%" src='docs/whatdo_ERD.png' />
 
 ### User Flow
 <img width="50%" src='docs/whatdo_USERFLOW.jpg' />
@@ -61,3 +63,5 @@ I intended to implement a tagging system, but within the available time to me de
 - Sophia Bell for [a great guide to getting jQuery on Rails 6](https://blog.makersacademy.com/how-to-install-bootstrap-and-jquery-on-rails-6-da6e810c1b87)
 
 - Juan Burgos for [a lovely photo](https://unsplash.com/photos/_Te_aXfSQ0Y)
+
+- [dbdiagrams.io](https://dbdiagram.io/d) makes awesome diagrams from `schema.rb` imports
