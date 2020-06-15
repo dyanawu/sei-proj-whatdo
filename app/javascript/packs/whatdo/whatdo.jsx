@@ -174,8 +174,12 @@ class WhatDo extends Component {
       .then((res) => {
         let newItem = res.data;
         console.log(newItem);
-        this.fetchListItems(this.state.currentList);
-        console.log(this.state);
+        if (this.state.currentList) {
+          this.fetchListItems(this.state.currentList);
+        } else {
+          this.fetchLists();
+          this.fetchItems();
+        }
       })
       .catch((err) => {
         console.error(err);
