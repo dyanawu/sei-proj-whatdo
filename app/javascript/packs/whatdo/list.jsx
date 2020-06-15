@@ -14,7 +14,10 @@ export default class List extends Component {
       return (
         <Item
           item={i}
-          key={i.id}/>
+          key={i.id}
+          toggleDone={(e) => this.props.toggleDone(e)}
+
+        />
       );
     });
 
@@ -22,7 +25,9 @@ export default class List extends Component {
       return (
         <Item
           item={i}
-          key={i.id}/>
+          key={i.id}
+          toggleDone={(e) => this.props.toggleDone(e)}
+        />
       );
     });
 

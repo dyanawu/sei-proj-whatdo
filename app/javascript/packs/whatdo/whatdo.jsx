@@ -146,6 +146,10 @@ class WhatDo extends Component {
       });
   }
 
+  toggleDone(e) {
+    console.log(e.target.id);
+  }
+
   render() {
     return (
       <>
@@ -167,6 +171,7 @@ class WhatDo extends Component {
             delList={(id) => this.delList(id)}
             setItem={(e) => this.setItem(e)}
             addItemToList={(item, list) => this.addItemToList(item, list)}
+            toggleDone={(e) => this.toggleDone(e)}
           />
         </div>
       </>
