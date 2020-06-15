@@ -1,41 +1,41 @@
 import React, {Component, Fragment} from 'react'
 import ReactDOM from 'react-dom'
 
-export default class ModalForm extends Component {
+export default class RenameForm extends Component {
   render() {
     return (
       <Fragment>
         <button
           type="button"
-          className="btn btn-dark btn-block "
+          className="btn btn-dark"
           data-toggle="modal"
-          data-target="#modal-form"
+          data-target="#rename-form"
         >
-          add list
+          rename list
         </button>
 
-        <div className="modal fade" id="modal-form" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal fade" id="rename-form" tabIndex="-1" role="dialog">
           <div className="modal-dialog modal-dialog-centered" role="document">
             <div className="modal-content">
               <div className="modal-body">
                 <form>
                   <div
                     className="form-group">
-                    <label>list name</label>
+                    <label>new list name</label>
                     <input
                       type="text"
                       className="form-control"
-                      value={this.props.newListName || ""}
-                      onChange={(e) => this.props.setList(e)}
+                      value={this.props.changedListName || ""}
+                      onChange={(e) => this.props.setChangedListName(e)}
                     />
                   </div>
                   <button
                     type="submit"
                     className="btn btn-block btn-dark"
                     data-dismiss="modal"
-                    onClick={() => this.props.addList()}
+                    onClick={() => this.props.renameList()}
                   >
-                    create list
+                    rename list
                   </button>
                 </form>
               </div>

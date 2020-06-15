@@ -38,7 +38,10 @@ export default class List extends Component {
                            <ListViewForm
                              newItemName={this.props.newItemName}
                              currentList={this.props.currentList}
+                             changedListName={this.props.changedListName}
                              delList={(id) => this.props.delList(id)}
+                             setChangedListName={(e) => this.props.setChangedListName(e)}
+                             renameList={(id) => this.props.renameList(id)}
                              setItem={(e) => this.props.setItem(e)}
                              addItemToList={(item, list) => this.props.addItemToList(item, list)}
                            />) :

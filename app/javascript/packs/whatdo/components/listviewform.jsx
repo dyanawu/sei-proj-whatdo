@@ -1,12 +1,14 @@
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 
+import RenameForm from './renameform'
+
 export default class ListViewForm extends Component {
   render() {
     const currentList = this.props.currentList;
     return (
       <>
-        <div className="col-md-8 no-gutters px-1">
+        <div className="col-md-6 no-gutters px-1">
           <input
             id="itemfield"
             className="form-control"
@@ -23,10 +25,15 @@ export default class ListViewForm extends Component {
           </button>
         </div>
 
-        <div className="col-md-2 no-gutters px-auto py-0 text-right">
+        <div className="col-md-3 offset-md-1 no-gutters p-0 d-flex justify-content-end">
+          <RenameForm
+            changedListName={this.props.changedListName}
+            setChangedListName={(e) => this.props.setChangedListName(e)}
+            renameList={() => this.props.renameList()}
+          />
           <button
             onClick={() => this.props.delList(currentList)}
-            className="btn btn-warning"
+            className="btn btn-warning ml-4"
           >
             delete list
           </button>

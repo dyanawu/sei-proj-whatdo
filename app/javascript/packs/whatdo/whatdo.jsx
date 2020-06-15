@@ -14,6 +14,7 @@ class WhatDo extends Component {
       items: [],
       currentList: undefined,
       currentListName: undefined,
+      changedListName: undefined,
       newListName: undefined,
       newItemName: undefined
     };
@@ -64,6 +65,42 @@ class WhatDo extends Component {
     this.setState({
       newListName: e.target.value
     });
+  }
+
+  setChangedListName(e) {
+    this.setState({
+      changedListName: e.target.value
+    });
+    console.log(this.state.changedListName);
+  }
+
+  renameList() {
+    console.log(this.state.currentList);
+    console.log(this.state.changedListName);
+    let token = document.head.querySelector('meta[name="csrf-token"]');
+
+    if (token) {
+      axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+    } else {
+      console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+    }
+
+    const url = `/lists/${this.state.currentList}.json`;
+
+    axios
+      .patch(url, {
+        name: this.state.changedListName
+      })
+      .then((res) => {
+        this.setState({
+          currentListName: this.state.changedListName,
+          changedListName: undefined
+        });
+        this.fetchLists();
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   }
 
   addList() {
@@ -229,7 +266,10 @@ class WhatDo extends Component {
             newItemName={this.state.newItemName}
             currentList={this.state.currentList}
             currentListName={this.state.currentListName}
+            changedListName={this.state.changedListName}
             delList={(id) => this.delList(id)}
+            setChangedListName={(e) => this.setChangedListName(e)}
+            renameList={(id) => this.renameList(id)}
             setItem={(e) => this.setItem(e)}
             addItemToList={(item, list) => this.addItemToList(item, list)}
             toggleDone={(e) => this.toggleDone(e)}
