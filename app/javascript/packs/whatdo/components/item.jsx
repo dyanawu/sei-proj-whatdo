@@ -33,6 +33,17 @@ export default class Item extends Component {
       </a>
     );
 
+    const deleteActionBadge = (
+      <a
+        href="#"
+        className="badge badge-danger p-2 text-white"
+        id={i.id}
+        onClick={(e) => this.props.delItem(e.target.id)}
+      >
+        delete
+      </a>
+    );
+
     return (
       <div
         className="col-sm-12 col-md-6 col-lg-4 col-xl-3 mb-3 px-1"
@@ -46,8 +57,14 @@ export default class Item extends Component {
             {i.name}
           </div>
           <div className="card-footer d-flex justify-content-between">
-            {statusBadge}
-            {doneActionBadge}
+            <div>
+              {statusBadge}
+              {" "}
+              {doneActionBadge}
+            </div>
+            <div>
+              {deleteActionBadge}
+            </div>
           </div>
         </div>
       </div>

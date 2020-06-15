@@ -16,6 +16,7 @@ export default class List extends Component {
           item={i}
           key={i.id}
           toggleDone={(e) => this.props.toggleDone(e)}
+          delItem={(id) => this.props.delItem(id)}
 
         />
       );
@@ -27,6 +28,7 @@ export default class List extends Component {
           item={i}
           key={i.id}
           toggleDone={(e) => this.props.toggleDone(e)}
+          delItem={(id) => this.props.delItem(id)}
         />
       );
     });

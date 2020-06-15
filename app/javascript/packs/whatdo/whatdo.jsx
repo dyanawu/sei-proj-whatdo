@@ -147,7 +147,57 @@ class WhatDo extends Component {
   }
 
   toggleDone(e) {
-    console.log(e.target.id);
+    let token = document.head.querySelector('meta[name="csrf-token"]');
+
+    if (token) {
+      axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+    } else {
+      console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+    }
+
+    const url = `/items/${e.target.id}.json`;
+
+    console.log(this.state.items);
+    const [item] = this.state.items.filter((i) => i.id === parseInt(e.target.id));
+    console.log(item);
+
+    axios
+      .patch(url, {
+        done: !item.done
+      })
+      .then((res) => {
+        let newItem = res.data;
+        console.log(newItem);
+        this.fetchListItems(this.state.currentList);
+        console.log(this.state);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
+
+  delItem(id) {
+    let token = document.head.querySelector('meta[name="csrf-token"]');
+    if (token) {
+      axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+    } else {
+      console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+    }
+
+    const url = `/items/${id}.json`;
+    axios
+      .delete(url)
+      .then((res) => {
+        if (this.state.currentList) {
+          this.fetchListItems(this.state.currentList);
+        } else {
+          this.fetchLists();
+          this.fetchItems();
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   }
 
   render() {
@@ -172,6 +222,7 @@ class WhatDo extends Component {
             setItem={(e) => this.setItem(e)}
             addItemToList={(item, list) => this.addItemToList(item, list)}
             toggleDone={(e) => this.toggleDone(e)}
+            delItem={(id) => this.delItem(id)}
           />
         </div>
       </>
