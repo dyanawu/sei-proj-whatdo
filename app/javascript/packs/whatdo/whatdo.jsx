@@ -84,7 +84,6 @@ class WhatDo extends Component {
           currentList: newList.id
         });
         this.fetchListItems(newList.id);
-        console.log(this.state);
       })
       .catch((err) => {
         console.error(err);
@@ -117,9 +116,34 @@ class WhatDo extends Component {
   }
 
   addItemToList(item, listId) {
-    console.log("add to", listId);
-    console.log(item);
-    this.setState({newItemName: undefined});
+    let token = document.head.querySelector('meta[name="csrf-token"]');
+
+    if (token) {
+      axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+    } else {
+      console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+    }
+
+    const url = '/items.json';
+
+    axios
+      .post(url, {
+        name: this.state.newItemName,
+        list_id: this.state.currentList
+      })
+      .then((res) => {
+        let newItem = res.data;
+        console.log(newItem);
+        this.setState({
+          items: [...this.state.items, newItem],
+          newItemName: undefined
+        });
+        this.fetchListItems(this.state.currentList);
+        console.log(this.state);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   }
 
   render() {
