@@ -28,7 +28,7 @@ class WhatDo extends Component {
         const data = res.data;
         this.setState({ lists: data });
       })
-      .catch(err => console.log(err));
+      .catch(err => console.error(err));
   }
 
   fetchItems() {
@@ -37,11 +37,10 @@ class WhatDo extends Component {
       .get(url)
       .then(res => {
         const data = res.data;
-        console.log(data);
         this.setState({items: data});
         this.setState({currentList: undefined});
       })
-      .catch(err => console.log(err));
+      .catch(err => console.error(err));
   }
 
   fetchListItems(id) {
@@ -51,14 +50,13 @@ class WhatDo extends Component {
       .then(res => {
         const data = res.data;
         const [list] = this.state.lists.filter((l) => l.id === parseInt(id));
-        console.log(list);
         this.setState({
           items: data,
           currentList: id,
           currentListName: list.name,
           newItemName: undefined});
       })
-      .catch(err => console.log(err));
+      .catch(err => console.error(err));
   }
 
   setList(e) {
@@ -71,12 +69,9 @@ class WhatDo extends Component {
     this.setState({
       changedListName: e.target.value
     });
-    console.log(this.state.changedListName);
   }
 
   renameList() {
-    console.log(this.state.currentList);
-    console.log(this.state.changedListName);
     let token = document.head.querySelector('meta[name="csrf-token"]');
 
     if (token) {
@@ -155,7 +150,6 @@ class WhatDo extends Component {
 
   setItem(e) {
     this.setState({newItemName: e.target.value});
-    console.log(this.state.newItemName);
   }
 
   addItemToList(item, listId) {
@@ -176,13 +170,11 @@ class WhatDo extends Component {
       })
       .then((res) => {
         let newItem = res.data;
-        console.log(newItem);
         this.setState({
           items: [...this.state.items, newItem],
           newItemName: undefined
         });
         this.fetchListItems(this.state.currentList);
-        console.log(this.state);
       })
       .catch((err) => {
         console.error(err);
@@ -200,9 +192,8 @@ class WhatDo extends Component {
 
     const url = `/items/${e.target.id}.json`;
 
-    console.log(this.state.items);
     const [item] = this.state.items.filter((i) => i.id === parseInt(e.target.id));
-    console.log(item);
+    const otherItems = this.state.items.filter((i) => i.id !== parseInt(e.target.id));
 
     axios
       .patch(url, {
@@ -210,13 +201,11 @@ class WhatDo extends Component {
       })
       .then((res) => {
         let newItem = res.data;
-        console.log(newItem);
-        if (this.state.currentList) {
-          this.fetchListItems(this.state.currentList);
-        } else {
-          this.fetchLists();
-          this.fetchItems();
-        }
+        let nowItems = [...otherItems, newItem];
+        nowItems.sort((a, b) => a.id - b.id);
+        this.setState({
+          items: [...nowItems]
+        });
       })
       .catch((err) => {
         console.error(err);
