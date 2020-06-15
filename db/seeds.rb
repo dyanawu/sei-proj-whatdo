@@ -31,7 +31,7 @@ User.create!(
 
 20.times do
   list = List.create!(
-    name: "to #{Faker::Verb.unique.base}",
+    name: Faker::Company.name,
     user_id: rand(User.first.id..User.last.id)
   )
   puts "created list '#{list.name}' for user '#{list.user.username}'"
