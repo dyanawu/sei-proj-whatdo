@@ -19,9 +19,11 @@ Please answer the following questions. Take at least 30 minutes to prepare.
 
 1. What in my process and approach to this project would I do differently next time?
 
+- I slightly mis-scoped and had to rip out my schema after the soft launch oops.
+
 1. What in my process and approach to this project went well that I would repeat next time?
 
-Scoping things right really helped make sure that things worked.
+- I managed to keep in mind things I wanted to build on process-wise from my previous projects and I think it felt a lot tidier in general this time. Like keeping more on-task and not ending up wandering all over code-wise then having a really messy commit.
 
 --
 
@@ -29,7 +31,13 @@ Scoping things right really helped make sure that things worked.
 
 1. What in my code and program design in the project would I do differently next time?
 
+- I feel like I ended up with a fairly large chunk of functions in the top level component and didn't figure out if I could have moved some of them into their lower level components.
+
+- I'd have liked to figure out functional components and hooks but erred on the side of completion for this project.
+
 1. What in my code and program design in the project went well? Is there anything I would do the same next time?
+
+- I took care to find ways of doing things by using modules (either npm or gem) instead of using manual includes where possible and I think that really helped with making something that deployed smoothly.
 
   For each, please include code examples.
   1. Code snippet up to 20 lines.
@@ -37,5 +45,13 @@ Scoping things right really helped make sure that things worked.
 
 #### SEI Unit 4 Post Mortem
 1. What habits did I use during SEI that helped me, that I will take on to my future coding projects?
+
+- Spending some time on a research spike right at the start helped, I felt I spent a lot less time during the coding phase finding out how to e.g. integrate libraries.
+
 2. What habits did I have during SEI I can improve on that I will try to change on future projects?
+
+- I think I tend to think in terms of just the schema/data and gauging effort on that; this definitely caused me a small amount of grief this time.
+
 3. How is the overall level of the course overall? (instruction, course materials, etc.)
+
+- I had such a good time all in all. 
