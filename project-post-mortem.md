@@ -21,7 +21,7 @@ Please answer the following questions. Take at least 30 minutes to prepare.
 
 - I slightly mis-scoped and had to rip out my schema after the soft launch oops.
 
-1. What in my process and approach to this project went well that I would repeat next time?
+2. What in my process and approach to this project went well that I would repeat next time?
 
 - I managed to keep in mind things I wanted to build on process-wise from my previous projects and I think it felt a lot tidier in general this time. Like keeping more on-task and not ending up wandering all over code-wise then having a really messy commit.
 
@@ -35,7 +35,7 @@ Please answer the following questions. Take at least 30 minutes to prepare.
 
 - I'd have liked to figure out functional components and hooks but erred on the side of completion for this project.
 
-1. What in my code and program design in the project went well? Is there anything I would do the same next time?
+2. What in my code and program design in the project went well? Is there anything I would do the same next time?
 
 - I took care to find ways of doing things by using modules (either npm or gem) instead of using manual includes where possible and I think that really helped with making something that deployed smoothly.
 
