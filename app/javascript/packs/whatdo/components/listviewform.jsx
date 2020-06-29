@@ -16,7 +16,7 @@ export default class ListViewForm extends Component {
             value={this.props.newItemName || ''}
           />
         </div>
-        <div className="col-md-2 no-gutters p-0">
+        <div className="col-md-3 p-0">
           <button
             onClick={() => this.props.addItemToList(this.props.newItemName, currentList)}
             className="btn btn-dark"
@@ -25,7 +25,7 @@ export default class ListViewForm extends Component {
           </button>
         </div>
 
-        <div className="col-md-3 offset-md-1 no-gutters p-0 d-flex justify-content-end">
+        <div className="col-md-3 p-0 d-flex justify-content-end">
           <RenameForm
             changedListName={this.props.changedListName}
             setChangedListName={(e) => this.props.setChangedListName(e)}
